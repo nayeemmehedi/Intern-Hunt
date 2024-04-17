@@ -1,0 +1,20 @@
+.newView {
+    margin: 60px;
+    padding: 60px;
+    border: 2px solid black;
+  }
+  .manualStyle {
+    width: 320px;
+    border: 1px solid rgb(111, 44, 236);
+  
+    background-color: black;
+  }
+  
+  @media screen and (max-width: 576px) {
+    .manualStyle {
+      width: 100%;
+  
+      border: 1px solid rgb(231, 14, 123);
+    }
+  }
+  

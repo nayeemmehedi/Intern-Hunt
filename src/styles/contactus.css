@@ -1,0 +1,120 @@
+.firstForm form {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .firstForm h1 {
+    font-weight: 100;
+    color: white;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(79, 98, 148);
+  }
+  
+  /* form {
+    background: #0e101c;
+    max-width: 400px;
+    margin: 0 auto;
+  } */
+  
+  .firstForm input p {
+    color: #bf1650;
+  }
+  
+  .firstForm input p::before {
+    display: inline;
+    content: "⚠ ";
+  }
+  
+  .firstForm input {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid rgb(71, 27, 194);
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  
+  .firstForm label {
+    line-height: 2;
+    text-align: left;
+    display: block;
+    
+    color: rgb(172, 129, 129);
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .firstForm button[type="submit"],
+  .firstForm input[type="submit"] {
+    background: #591c7c;
+    color: white;
+    text-transform: uppercase;
+    border: none;
+    margin-top: 40px;
+    padding: 20px;
+    font-size: 16px;
+    font-weight: 100;
+    letter-spacing: 10px;
+  }
+  
+  .firstForm button[type="submit"]:hover,
+  .firstForm input[type="submit"]:hover {
+    background: #f30659;
+  }
+  
+  .firstForm button[type="submit"]:active,
+  .firstForm input[type="button"]:active,
+  .firstForm input[type="submit"]:active {
+    transition: 0.3s all;
+    transform: translateY(3px);
+    border: 1px solid transparent;
+    opacity: 0.8;
+  }
+  
+  .firstForm input:disabled {
+    opacity: 0.4;
+  }
+  
+  .firstForm input[type="button"]:hover {
+    transition: 0.3s all;
+  }
+  
+  .firstForm button[type="submit"],
+  .firstForm input[type="button"],
+  .firstForm input[type="submit"] {
+    -webkit-appearance: none;
+  }
+  
+  /* .App {
+    max-width: 600px;
+    margin: 0 auto;
+  } */
+  
+  .firstForm button[type="button"] {
+    display: block;
+    appearance: none;
+    background: #333;
+    color: white;
+    border: none;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 4px;
+  }
+  
+  .firstForm hr {
+    margin-top: 30px;
+  }
+  
+  .firstForm button {
+    display: block;
+    appearance: none;
+    margin-top: 40px;
+    border: 1px solid #333;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 4px;
+  }

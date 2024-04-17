@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.ant-btn-primary:hover{
+    @apply bg-slate-500 text-white !important
+}
+.ant-btn-primary:focus {
+  @apply bg-green-300 text-slate-50 !important
+}
+.ant-tooltip-inner{
+  display: none;
+}
+
+.ant-form-item-required{
+  color:aliceblue !important;
+}
+.ant-upload{
+  background-color: rgb(163, 164, 171);
+  color: black !important;
+}
+
+.boxMission{
+    height:70px;
+    width:70px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 4px #c7c6c5;
+
+}

@@ -1,0 +1,21 @@
+.nayeem .button {
+    padding: 15px 25px;
+    font-size: 24px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: #3598b6;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #e6e3e8;
+  }
+  
+  .nayeem .button:hover {background-color: #2f4757}
+  
+  .nayeem .button:active {
+    background-color: #3598b6;
+    box-shadow: 0 5px rgb(236, 238, 232);
+    transform: translateY(4px);
+  }
+
