@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import lottie from "lottie-web";
-import social from "../../utils/animation/social.json";
+import social from "../../../utils/animation/social.json";
 
 const Mission = () => {
   const container = useRef(null);

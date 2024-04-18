@@ -1,5 +1,5 @@
 import React from "react";
-import svg from "../../../../public/image/intern.jpg";
+import svg from "../../../../../public/image/intern.jpg";
 import FormatAlignLeftIcon from "@mui/icons-material/FormatAlignLeft";
 import SettingsInputAntennaIcon from "@mui/icons-material/SettingsInputAntenna";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
@@ -12,7 +12,7 @@ import PlaceIcon from "@mui/icons-material/Place";
 import DateRangeIcon from "@mui/icons-material/DateRange";
 import BarChartRoundedIcon from "@mui/icons-material/BarChartRounded";
 import { Link } from "react-router-dom";
-import "../../../styles/internDetails.css";
+import "../../../../styles/internDetails.css";
 
 const EveryDetails = ({ newvalue }) => {
   const {
@@ -135,7 +135,7 @@ const EveryDetails = ({ newvalue }) => {
           </h6>
           <p className="ms-3"> {datetime}</p>
           <div className="text-center nayeem">
-            <Link to={`/FormCV/${_id}`}>
+            <Link to={`/apply-intern/${_id}`}>
               {" "}
               <button className="button">Apply Intern</button>
             </Link>

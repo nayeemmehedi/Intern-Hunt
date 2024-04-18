@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
-import "../../styles/review.css";
+import "../../../styles/review.css";
 // import { localhost } from "../../main.jsx";
 
-const ReviewNayeem = () => {
+const Reviews = () => {
   const [review, setreview] = useState(true);
 
   const {
@@ -99,4 +99,4 @@ const ReviewNayeem = () => {
   );
 };
 
-export default ReviewNayeem;
+export default Reviews;

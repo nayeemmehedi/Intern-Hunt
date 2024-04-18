@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const [role, setRole] = useState("company");
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -20,39 +22,75 @@ function Navbar() {
               <FontAwesomeIcon icon={faFeatherAlt} />
               INTERN{" "}
             </span>{" "}
-            <span className="text-white"> HUNT</span>
+            <span className="text-white font-medium"> HUNT</span>
           </Link>
         </div>
-        <div className="hidden lg:block mt-3">
-          <ul className="flex space-x-12 font-mono">
-            <Link to="/intern-find" className="no-underline text-white">
-              <li className="hidden md:block ">Intern</li>
-            </Link>
-            <Link to="/applied-company" className="no-underline text-white">
-              {" "}
-              <li>Card</li>{" "}
-            </Link>
-            <Link to="/review" className="no-underline text-white">
-              {" "}
-              <li>Review</li>{" "}
-            </Link>
-            <Link to="/hire" className="no-underline text-white">
-              {" "}
-              <li>Hire You</li>{" "}
-            </Link>
-          </ul>
-        </div>
 
-        <div className="hidden lg:block">
-          <ul className="flex space-x-4">
-            <li className="px-3 py-2 rounded bg-blue-600 text-sm font-semibold">
-              Login
-            </li>
-            <li className="px-3 py-2 rounded bg-blue-600 text-sm font-semibold">
-              Admin Login
-            </li>
-          </ul>
-        </div>
+        {role === "intern" ? (
+          <div className="hidden lg:block mt-3">
+            <ul className="flex space-x-12 font-mono">
+              <Link to="/intern-find" className="no-underline text-white">
+                <li className="hidden md:block ">Intern</li>
+              </Link>
+              <Link to="/applied-company" className="no-underline text-white">
+                {" "}
+                <li>Card</li>{" "}
+              </Link>
+              <Link to="/review" className="no-underline text-white">
+                {" "}
+                <li>Review</li>{" "}
+              </Link>
+              <Link to="/hire" className="no-underline text-white">
+                {" "}
+                <li>Hire You</li>{" "}
+              </Link>
+            </ul>
+          </div>
+        ) : (
+          ""
+        )}
+
+        {role === "company" ? (
+          <div className="hidden lg:block">
+            <Link className="text-white no-underline" to="/company">
+              {" "}
+              <ul className="flex space-x-4">
+                <li className="px-3 py-2 rounded bg-blue-600 text-sm font-semibold">
+                  Company Dashboard
+                </li>
+              </ul>
+            </Link>
+          </div>
+        ) : (
+          ""
+        )}
+
+        {role == "intern" ? (
+          <div className="hidden lg:block">
+            <ul className="flex space-x-4">
+              <li className="px-3 py-2 rounded bg-blue-600 text-sm font-semibold">
+                Login
+              </li>
+              <li className="px-3 py-2 rounded bg-blue-600 text-sm font-semibold">
+                Admin Login
+              </li>
+            </ul>
+          </div>
+        ) : (
+          ""
+        )}
+
+        {role === "admin" ? (
+          <div className="hidden lg:block">
+            <ul className="flex space-x-4">
+              <li className="px-3 py-2 rounded bg-blue-600 text-sm font-semibold">
+                Admin Dashboard
+              </li>
+            </ul>
+          </div>
+        ) : (
+          ""
+        )}
 
         {/* Mobile menu toggle button */}
         <div className="lg:hidden flex justify-center sm:justify-end  ">

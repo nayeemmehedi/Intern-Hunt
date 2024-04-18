@@ -1,7 +1,11 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import lottie from "lottie-web";
 
-function LottieFile({value}) {
+function LottieFile({value,height="650px"}) {
+
+
+
+
   const container = useRef(null);
 
   useEffect(() => {
@@ -19,7 +23,7 @@ function LottieFile({value}) {
     <div className="App">
       <br /> <br />
       <div
-        style={{ height: "650px" }}
+        style={{ height: height }}
         className="container"
         ref={container}
       ></div>

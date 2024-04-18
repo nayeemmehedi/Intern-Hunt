@@ -1,5 +1,5 @@
 import React from 'react'
-import AppliedCompanyCard from '../components/AppliedCompanyCard'
+import AppliedCompanyCard from '../components/internShip/AppliedCompanyCard'
 
 function Card() {
   return (

@@ -1,11 +1,11 @@
-import EarthRound from '../components/Home/EarthRound'
-import PopularIntern from '../components/Home/PopulerIntern'
-import CompanyDetails from '../components/Home/CompanyDetails'
-import JoinPage from '../components/Home/JoinPage'
-import OurService from '../components/Home/OurService'
-import Mission from '../components/Home/Mission'
-import WorkingStep from '../components/Home/WorkingStep'
-import ContactUs from '../components/Home/ContactUs'
+import CompanyDetails from "../components/internShip/Home/CompanyDetails"
+import ContactUs from "../components/internShip/Home/ContactUs"
+import EarthRound from "../components/internShip/Home/EarthRound"
+import JoinPage from "../components/internShip/Home/JoinPage"
+import Mission from "../components/internShip/Home/Mission"
+import OurService from "../components/internShip/Home/OurService"
+import PopularIntern from "../components/internShip/Home/PopulerIntern"
+import WorkingStep from "../components/internShip/Home/WorkingStep"
 
 function Home() {
   return (

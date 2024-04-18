@@ -1,8 +1,7 @@
 import React from "react";
-import earthVideo from "../../utils/earth.mp4";
-import "../../styles/earth.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import earthVideo from "../../../utils/earth.mp4";
+import "../../../styles/earth.css";
+
 // import {Link} from "react-router-dom"
 
 const EarthRound = () => {

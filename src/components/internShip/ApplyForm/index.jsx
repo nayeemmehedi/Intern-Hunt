@@ -8,6 +8,8 @@ const ApplyForm = () => {
   const [form] = Form.useForm();
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
+
+    event.preventDefault();
   };
 
   const renderFeedbackIcon = (props) => {
@@ -25,9 +27,9 @@ const ApplyForm = () => {
 
   const handleFileChange = ({ fileList }) => {
     if (fileList.length === 0) {
-      form.setFields([{ name: 'pdfFile', errors: ['PDF file is required'] }]);
+      form.setFields([{ name: 'pdfFile' }]);
     } else {
-      form.setFields([{ name: 'pdfFile', errors: [] }]);
+      form.setFields([{ name: 'pdfFile' }]);
     }
   };
 
@@ -105,11 +107,12 @@ const ApplyForm = () => {
         <Form.Item
           name="linkedIn"
           label="LinkedIn Link"
+          className="ant-label"
           rules={[
             {
               required: true,
-              message: "Please input website!",
-              pattern: /^https?:\/\/(www\.)?linkedin\.com\/[a-zA-Z0-9_.-]+\/?$/,
+              message: "Please enter a valid LinkedIn link !",
+              pattern: /((https?:\/\/)?((www|\w\w)\.)?linkedin\.com\/)((([\w]{2,3})?)|([^\/]+\/(([\w|\d-&#?=])+\/?){1,}))$/,
             },
           ]}
         >

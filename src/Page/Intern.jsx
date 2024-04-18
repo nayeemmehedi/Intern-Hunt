@@ -1,7 +1,8 @@
 import React from "react";
 import LottieFile from "../common/LottiFile";
 import hire from "../utils/animation/hire.json";
-import JobFind from "../components/Intern/Job-Find/Index";
+import JobFind from "../components/internShip/Intern/Job-Find/Index";
+// import JobFind from "../components/Intern/Job-Find/Index";
 
 const Intern = () => {
   return (

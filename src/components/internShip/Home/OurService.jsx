@@ -1,6 +1,6 @@
 import React from "react";
-import imgA from "../../utils/illustration/interview.jpg";
-import "../../styles/service.css";
+import imgA from "../../../utils/illustration/interview.jpg";
+import "../../../styles/service.css";
 
 const OurService = () => {
   return (

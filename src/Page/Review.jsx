@@ -1,9 +1,9 @@
 import React from 'react'
-import Reviews from '../components/Review'
+import Reviews from '../components/internShip/Review'
 
 function Review() {
   return (
-    <div><Reviews></Reviews></div>
+    <Reviews></Reviews>
   )
 }
 export default Review

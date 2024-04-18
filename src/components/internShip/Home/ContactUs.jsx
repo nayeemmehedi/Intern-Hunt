@@ -1,7 +1,7 @@
 import React from "react";
-import "../../styles/contactus.css";
+import "../../../styles/contactus.css";
 import { useForm } from "react-hook-form";
-import img from "../../utils/illustration/3593987.jpg";
+import img from "../../../utils/illustration/3593987.jpg";
 // import emailjs from 'emailjs-com';
 
 const ContactUs = () => {

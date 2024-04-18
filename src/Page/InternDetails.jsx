@@ -1,5 +1,5 @@
 import React from 'react'
-import Details from '../components/InternDetails/Details'
+import Details from '../components/internShip/InternDetails/Details'
 
 function InternDetails() {
   return (
