@@ -1,16 +1,40 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFeatherAlt } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserCircle, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const [role, setRole] = useState("company");
+  const [role, setRole] = useState(null);
+
+  const roleValue = localStorage.getItem("role");
+  const userName = localStorage.getItem("name")?? "User"
+
+
+
+  useEffect(() => {
+    setRole(roleValue);
+  }, [roleValue]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  const [isOpen, setIsOpen] = useState(false);
+  // const userName = "John Doe"; // Replace with your actual user name
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleLogout = () => {
+    // Implement your logout logic here
+    console.log("Logout clicked");
+  };
+
 
   return (
     <div className="bg-black ">
@@ -26,8 +50,8 @@ function Navbar() {
           </Link>
         </div>
 
-        {role === "intern" ? (
-          <div className="hidden lg:block mt-3">
+        {role === "intern" || role ==="null" || role === null ? (
+          <div className="hidden lg:block mt-3 ">
             <ul className="flex space-x-12 font-mono">
               <Link to="/intern-find" className="no-underline text-white">
                 <li className="hidden md:block ">Intern</li>
@@ -65,32 +89,78 @@ function Navbar() {
           ""
         )}
 
-        {role == "intern" ? (
+        {role === "null" || role === null  &&  (
           <div className="hidden lg:block">
-            <ul className="flex space-x-4">
-              <li className="px-3 py-2 rounded bg-blue-600 text-sm font-semibold">
-                Login
-              </li>
-              <li className="px-3 py-2 rounded bg-blue-600 text-sm font-semibold">
-                Admin Login
-              </li>
-            </ul>
+            <Link to="/login" className="no-underline text-white">
+              <ul className="flex space-x-4">
+                <li className="px-3 py-2 rounded bg-blue-600 text-sm font-semibold">
+                  Login
+                </li>
+              </ul>
+            </Link>
+          </div>
+        )}
+
+        {role === "admin" ? (
+          <div className="hidden lg:block">
+            <Link className="text-white no-underline" to="/admin">
+              <ul className="flex space-x-4">
+                <li className="px-3 py-2 rounded bg-blue-600 text-sm font-semibold">
+                  Admin Dashboard
+                </li>
+              </ul>
+            </Link>
           </div>
         ) : (
           ""
         )}
 
-        {role === "admin" ? (
-          <div className="hidden lg:block">
-            <ul className="flex space-x-4">
-              <li className="px-3 py-2 rounded bg-blue-600 text-sm font-semibold">
-                Admin Dashboard
-              </li>
-            </ul>
-          </div>
-        ) : (
-          ""
-        )}
+        {/* //drop down  */}
+
+       { (roleValue ==="intern" && userName !=="undefined") && <div className="relative">
+          <button
+            className="flex items-center text-white rounded bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none py-1 font-thin  px-4  text-center  "
+            type="button"
+            onClick={toggleDropdown}
+          >
+            <FontAwesomeIcon icon={faUserCircle} className="mr-2" />
+            {userName}
+            <svg
+              className="ml-2 w-4 h-4"
+              aria-hidden="true"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M19 9l-7 7-7-7"
+              ></path>
+            </svg>
+          </button>
+
+          {isOpen && (
+            <div className="absolute right-0 z-10 mt-2 w-36 rounded-md shadow-lg bg-gray-700">
+              <div
+                className="py-1"
+                role="menu"
+                aria-orientation="vertical"
+                aria-labelledby="options-menu"
+              >
+                <button
+                  className="block px-4 py-2 text-sm text-white"
+                  onClick={handleLogout}
+                >
+                  <FontAwesomeIcon icon={faSignOutAlt} className="mr-2" />
+                  Logout
+                </button>
+              </div>
+            </div>
+          )}
+        </div>}
 
         {/* Mobile menu toggle button */}
         <div className="lg:hidden flex justify-center sm:justify-end  ">
@@ -144,7 +214,7 @@ function Navbar() {
       >
         <div className="px-2 pt-2 pb-3 space-y-1">
           <Link
-            to="intern"
+            to="/intern-find"
             href="#"
             className="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
           >
@@ -156,31 +226,26 @@ function Navbar() {
           >
             Card
           </Link>
-          <a
-            href="#"
+          <Link
+            to="/review"
             className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
           >
             Review
-          </a>
-          <a
-            href="#"
+          </Link>
+          <Link
+            to="/hire"
             className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
           >
             Hire
-          </a>
+          </Link>
 
-          <a
+          <Link to="/login"
             href="#"
             className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
           >
             Login
-          </a>
-          <a
-            href="#"
-            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Admin Login
-          </a>
+          </Link>
+         
           {/* Add more menu items as needed */}
         </div>
       </div>

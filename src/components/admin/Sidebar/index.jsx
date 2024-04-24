@@ -14,18 +14,18 @@ const iconsValue = [
   {
     name: <TiHome className="w-6 h-4"></TiHome>,
     value: "Overview",
-    link:"/company/Overview"
+    link:"/admin/Overview"
   },
   {
     name: <MdDeleteSweep className="w-6 h-4"></MdDeleteSweep>,
     value: "Job Post",
-    link:"/company/jobPost"
+    link:"/admin/jobPost"
 
   },
   {
     name: <GiNetworkBars className="w-6 h-4"></GiNetworkBars>,
     value: "Total Job",
-    link:"/company/total-job-post"
+    link:"/admin/total-job-post"
 
   },
   {
@@ -55,15 +55,15 @@ const iconsValue = [
   }
 ];
 
-function MainPage() {
+function Sidebar() {
   return (
     <div className="pt-10 bg-black ">
       <div className="px-4">
         <div className="flex  bg-gray-800 text-white rounded-lg px-4 py-2">
           <FaBuilding className=" mr-3 mt-3" size={15} />
           <div>
-            <div className="font-semibold  leading-tight">Company Name</div>
-            <p className="text-gray-300 text-sm">Production</p>
+            <div className="font-semibold  leading-tight">Hi Admin</div>
+            <p className="text-gray-300 text-sm">Welcome Back</p>
           </div>
         </div>
         <div className="flex justify-content-center items-center my-3">
@@ -93,4 +93,4 @@ function MainPage() {
   );
 }
 
-export default MainPage;
+export default Sidebar;

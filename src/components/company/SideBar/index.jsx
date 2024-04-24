@@ -55,7 +55,7 @@ const iconsValue = [
   }
 ];
 
-function MainPage() {
+function Sidebar() {
   return (
     <div className="pt-10 bg-black ">
       <div className="px-4">
@@ -93,4 +93,4 @@ function MainPage() {
   );
 }
 
-export default MainPage;
+export default Sidebar;

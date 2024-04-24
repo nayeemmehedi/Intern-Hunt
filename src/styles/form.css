@@ -1,0 +1,67 @@
+.formcv{
+    background-color: #0e101c;
+}
+
+
+.formcv form {
+    max-width: 500px;
+    margin: 0 auto;
+    color:#7808e034
+    
+  }
+  
+  .formcv h1 {
+    font-weight: 100;
+    color: white;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(79, 98, 148);
+  }
+  
+  .formcv  .form {
+    background: #0e101c;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .formcv p {
+    color: #bf1650;
+  }
+  
+  .formcv  p::before {
+    display: inline;
+    content: "⚠ ";
+  }
+  
+  .formcv input {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid white;
+    padding: 10px 15px;
+    /* margin-bottom: 10px; */
+    font-size: 14px;
+  }
+  
+  .formcv label {
+    line-height: 2;
+    text-align: left;
+    display: block;
+    /* margin-bottom: 13px; */
+    /* margin-top: 20px; */
+    color: white;
+    font-size: 14px;
+    font-weight: 200;
+  }
+ 
+  
+  
+  
+  
+  .formcv input:disabled {
+    opacity: 0.4;
+  }
+  
+  
+ 

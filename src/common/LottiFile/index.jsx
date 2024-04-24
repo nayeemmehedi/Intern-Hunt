@@ -1,11 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import lottie from "lottie-web";
 
-function LottieFile({value,height="650px"}) {
-
-
-
-
+function LottieFile({ value, height = "650px" }) {
   const container = useRef(null);
 
   useEffect(() => {
