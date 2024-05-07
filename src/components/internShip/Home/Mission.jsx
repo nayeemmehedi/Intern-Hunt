@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import lottie from "lottie-web";
 import social from "../../../utils/animation/social.json";
+import LazyLoad from "react-lazyload";
 
 const Mission = () => {
   const container = useRef(null);
@@ -42,11 +43,13 @@ const Mission = () => {
 
         <div className="col-lg-5 col-md-12 col-sm-12 pe-lg-5">
           <br /> <br />
+          <LazyLoad height={400}>
           <div
             style={{ height: "500px" }}
             className="container "
             ref={container}
           ></div>
+          </LazyLoad>
         </div>
       </div>
     </div>

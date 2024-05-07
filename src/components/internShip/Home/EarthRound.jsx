@@ -2,6 +2,7 @@ import React from "react";
 import earthVideo from "../../../utils/earth.mp4";
 import "../../../styles/earth.css";
 import { Link } from "react-router-dom";
+import LazyLoad from "react-lazyload";
 
 // import {Link} from "react-router-dom"
 
@@ -11,9 +12,11 @@ const EarthRound = () => {
       <div>
         <div className="heroContainer">
           <div className="heroBg">
+          <LazyLoad height={400}>
             <video className="vdo" autoPlay muted loop>
               <source src={earthVideo} type="video/mp4" />
             </video>
+            </LazyLoad>
           </div>
 
           <div className="heroContent text-white text-center">

@@ -2,6 +2,7 @@ import React from "react";
 import "../../../styles/contactus.css";
 import { useForm } from "react-hook-form";
 import img from "../../../utils/illustration/3593987.jpg";
+import LazyLoad from "react-lazyload";
 // import emailjs from 'emailjs-com';
 
 const ContactUs = () => {
@@ -35,12 +36,14 @@ const ContactUs = () => {
       </h2>
       <div className="row">
         <div className="d-flex justify-content-end col-sm-12 col-md-6 col-lg-6  ">
+        <LazyLoad height={200}>
           <img
             className="pb-5 "
             src={img}
             style={{ height: "400px", width: "400px" }}
             alt=""
           />
+          </LazyLoad>
         </div>
 
         <div className="col-sm-10 col-md-6 col-lg-6 ">

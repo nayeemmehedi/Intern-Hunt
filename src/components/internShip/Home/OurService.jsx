@@ -1,13 +1,16 @@
 import React from "react";
 import imgA from "../../../utils/illustration/interview.jpg";
 import "../../../styles/service.css";
+import LazyLoad from "react-lazyload";
 
 const OurService = () => {
   return (
     <div className="thirdc2">
       <div className="row">
         <div className="col-sm-12 col-md-6 col-lg-6">
+        <LazyLoad height={400}>
           <img className="imgstyle ms-4" src={imgA} alt="" />
+          </LazyLoad>
         </div>
 
         <div className=" col-sm-12 col-md-6 col-lg-6 imgstylemessage">
