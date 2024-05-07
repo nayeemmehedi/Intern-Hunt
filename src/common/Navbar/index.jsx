@@ -12,10 +12,7 @@ function Navbar() {
   const [role, setRole] = useState(null);
 
   const roleValue = localStorage.getItem("role");
-  const userName = localStorage.getItem("name")?? "User"
-
-
-
+  const userName = localStorage.getItem("name") ?? "User";
 
   useEffect(() => {
     setRole(roleValue);
@@ -36,27 +33,23 @@ function Navbar() {
   //   // Implement your logout logic here
   // };
 
-
   const handleLogout = () => {
-  
     logOut()
-        .then(response => {
-          console.log("logged out resposnse",response);
-            
-                // Clear localStorage
-                localStorage.clear(); // Clear everything from localStorage
-                // Redirect or do any necessary action
-                window.location = '/login'; // Redirect to login page
-            
-        })
-        .catch(error => {
-            // Clear localStorage
-            localStorage.clear(); // Clear everything from localStorage
-            // Redirect or do any necessary action
-            window.location = '/login'; // Redirect to login page
-        });
-};
+      .then((response) => {
+        console.log("logged out resposnse", response);
 
+        // Clear localStorage
+        localStorage.clear(); // Clear everything from localStorage
+        // Redirect or do any necessary action
+        window.location = "/login"; // Redirect to login page
+      })
+      .catch((error) => {
+        // Clear localStorage
+        localStorage.clear(); // Clear everything from localStorage
+        // Redirect or do any necessary action
+        window.location = "/login"; // Redirect to login page
+      });
+  };
 
   return (
     <div className="bg-black ">
@@ -72,7 +65,7 @@ function Navbar() {
           </Link>
         </div>
 
-        {role === "intern" || role ==="null" || role === null ? (
+        {role === "intern" || role === "null" || role === null ? (
           <div className="hidden lg:block mt-3 ">
             <ul className="flex space-x-12 font-mono">
               <Link to="/intern-find" className="no-underline text-white">
@@ -90,7 +83,7 @@ function Navbar() {
                 {" "}
                 <li>About Us</li>{" "}
               </Link>
-              
+
               {/* <Link to="/hire" className="no-underline text-white">
                 {" "}
                 <li>Hire You</li>{" "}
@@ -116,17 +109,18 @@ function Navbar() {
           ""
         )}
 
-        {role === "null" || role === null  &&  (
-          <div className="hidden lg:block">
-            <Link to="/login" className="no-underline text-white">
-              <ul className="flex space-x-4">
-                <li className="px-3 py-2 rounded  text-sm font-semibold ">
-                  Login
-                </li>
-              </ul>
-            </Link>
-          </div>
-        )}
+        {role === "null" ||
+          (role === null && (
+            <div className="hidden lg:block">
+              <Link to="/login" className="no-underline text-white ">
+                <ul className="flex space-x-4">
+                  <li className="px-3 py-2 rounded  text-sm font-semibold bg-blue-600">
+                    Login
+                  </li>
+                </ul>
+              </Link>
+            </div>
+          ))}
 
         {role === "admin" ? (
           <div className="hidden lg:block">
@@ -144,50 +138,52 @@ function Navbar() {
 
         {/* //drop down  */}
 
-       { (roleValue ==="intern" && userName !=="undefined") && <div className="relative">
-          <button
-            className="flex items-center text-white rounded bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none py-1 font-thin  px-4  text-center  "
-            type="button"
-            onClick={toggleDropdown}
-          >
-            <FontAwesomeIcon icon={faUserCircle} className="mr-2" />
-            <span className="hidden lg:block">{userName}</span>
-            <svg
-              className="ml-2 w-4 h-4"
-              aria-hidden="true"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
+        {roleValue === "intern" && userName !== "undefined" && (
+          <div className="relative">
+            <button
+              className="flex items-center text-white rounded bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none py-1 font-thin  px-4  text-center  "
+              type="button"
+              onClick={toggleDropdown}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M19 9l-7 7-7-7"
-              ></path>
-            </svg>
-          </button>
-
-          {isOpen && (
-            <div className="absolute right-0 z-10 mt-2 w-36 rounded-md shadow-lg bg-gray-700">
-              <div
-                className="py-1"
-                role="menu"
-                aria-orientation="vertical"
-                aria-labelledby="options-menu"
+              <FontAwesomeIcon icon={faUserCircle} className="mr-2" />
+              <span className="hidden lg:block">{userName}</span>
+              <svg
+                className="ml-2 w-4 h-4"
+                aria-hidden="true"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                <button
-                  className="block px-4 py-2 text-sm text-white "
-                  onClick={()=>handleLogout()}
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M19 9l-7 7-7-7"
+                ></path>
+              </svg>
+            </button>
+
+            {isOpen && (
+              <div className="absolute right-0 z-10 mt-2 w-36 rounded-md shadow-lg bg-gray-700">
+                <div
+                  className="py-1"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="options-menu"
                 >
-                  <FontAwesomeIcon icon={faSignOutAlt} className="mr-2 " />
-                  Logout
-                </button>
+                  <button
+                    className="block px-4 py-2 text-sm text-white "
+                    onClick={() => handleLogout()}
+                  >
+                    <FontAwesomeIcon icon={faSignOutAlt} className="mr-2 " />
+                    Logout
+                  </button>
+                </div>
               </div>
-            </div>
-          )}
-        </div>}
+            )}
+          </div>
+        )}
 
         {/* Mobile menu toggle button */}
         <div className="lg:hidden flex justify-center sm:justify-end  ">
@@ -266,13 +262,14 @@ function Navbar() {
             Hire
           </Link>
 
-          <Link to="/login"
+          <Link
+            to="/login"
             href="#"
             className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
           >
             Login
           </Link>
-         
+
           {/* Add more menu items as needed */}
         </div>
       </div>

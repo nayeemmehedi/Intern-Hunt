@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainLayout from "./layout/MainLayout";
 import HomeLayout from "./layout/HomeLayout";
 import PrivateRoute from "./routes/PrivateRoute";
+import LoadingPage from "./common/ResponseStatus/LoadingPage";
 
 // Lazy load components
 const Intern = lazy(() => import("./Page/Intern"));
@@ -32,7 +33,7 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<div><LoadingPage></LoadingPage></div>}>
             <Routes>
               <Route element={<MainLayout></MainLayout>}>
                 <Route path="/">
