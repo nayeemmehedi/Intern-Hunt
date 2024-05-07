@@ -20,7 +20,7 @@ Intern Hunt is a comprehensive web application that facilitates the process of c
 - **Job Posting**: Companies can post new internship opportunities with detailed descriptions and requirements.
 - **Internship Management**: Companies can view and manage their posted internships, including generating PDF reports of intern applications, confirming or rejecting applications.
 
-- **Company Login and Password**: email :benchmarkltdbd@gmail.com , password : NayeemMehedi#12
+- **Company Login and Password**: email :benchmarkltdbd@gmail.com , password :NayeemMehedi#12
 
 ### Admin Module
 
