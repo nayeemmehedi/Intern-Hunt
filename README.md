@@ -61,20 +61,22 @@ To get a local copy of the project up and running, please refer to the detailed 
 
 ## Installation
 
-1. **Frontend Repository**:
+1. **Frontend**:
 
 ```bash
-git clone https://github.com/your-repo/intern-hunt-frontend.git
+github link :  https://github.com/nayeemmehedi/Intern-Hunt
+
+Live Link : https://intern-hunt.vercel.app/
 
 ```
 
-2 **Backend Repository**:
+2. **Backend**:
 
 
 ```bash
-git clone https://github.com/nayeemmehedi/internhunt-backend-project
+github link :  https://github.com/nayeemmehedi/internhunt-backend-project
 
-Live Link: https://internhunt-backend-project.onrender.com/
+Live Link : https://internhunt-backend-project.onrender.com/
 
 ```
 
