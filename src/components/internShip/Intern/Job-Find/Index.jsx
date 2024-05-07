@@ -1,74 +1,56 @@
-import React, { useState, useEffect } from "react";
-import SpecificJob from "../SpecificJob/Index";
+import React, { useState } from 'react';
+import SpecificJob from '../SpecificJob/Index';
 import { Pagination } from 'antd';
+import { useQuery } from '@tanstack/react-query';
+import {totalJob} from "../../../../api/intern/"
 
 const JobFind = () => {
-  const [loading, setLoading] = useState(false);
-  const [alldata, setalldata] = useState([]);
+  const [page, setPage] = useState(1);
+  const [searchTerm, setSearchTerm] = useState('');
 
-  useEffect(() => {
-    setLoading(true);
-    fetch("https://internhunt-24.onrender.com/event")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("sata", data);
-        setalldata(data);
-        setLoading(false);
-      });
-  }, []);
-  const [alldata1, setalldata1] = useState("");
-
-  const shuffle = (a) => {
-    for (let i = a.length; i; i--) {
-      let j = Math.floor(Math.random() * i);
-      [a[i - 1], a[j]] = [a[j], a[i - 1]];
-    }
+  const { data, isLoading, error ,isError } = useQuery({
+    queryKey: ['totalJob', searchTerm, page],
+    queryFn: () => totalJob({ searchTerm, page }),
+    // enabled: true, // or remove this line
+  });
+console.log("data", data);
+  const handlePageChange = (newPage) => {
+    setPage(newPage);
   };
 
-  shuffle(alldata);
-
-  if (loading) {
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+  };
+  if (isLoading ) {
     return <div className="h-96">Loading...</div>;
   }
 
   return (
     <div>
-      {!loading && (
-        <div>
-          {" "}
-          <small>Type Job Name</small> <br />
-        </div>
-      )}
-      <input
-        type="text"
-        className="form-control"
-        placeholder="searching.."
-        onChange={(event) => {
-          setalldata1(event.target.value);
-        }}
-      />
-
+      {/* <div>
+        <small>Type Job Name</small>
+        <br />
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Searching..."
+          value={searchTerm}
+          onChange={handleSearch}
+        />
+      </div> */}
       <div className="grid grid-cols-1 lg:grid-cols-3">
-        {alldata
-          ?.filter((v) => {
-            if (alldata1 == "") {
-              return v;
-            } else if (
-              v.job_tital.toLowerCase().includes(alldata1.toLowerCase())
-            ) {
-              return v;
-            }
-          })
-          .map((value) => (
-            <SpecificJob valuename={value}></SpecificJob>
-          ))}
+        {data?.data?.value.map((value) => (
+          <SpecificJob key={value._id} valuename={value}></SpecificJob>
+        ))}
       </div>
-
-     <div className="text-center my-4">
-     <Pagination defaultCurrent={1} total={50} />
-     </div>
-
- 
+      <div className="text-center my-4">
+        <Pagination
+          current={data?.data?.currentPage}
+          total={data?.data?.totalDocs}
+          pageSize={data?.data?.limit}
+          onChange={handlePageChange}
+        />
+      </div>
     </div>
   );
 };

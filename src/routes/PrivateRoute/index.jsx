@@ -14,7 +14,7 @@ const PrivateRoute = ({ allowedRoles, children }) => {
   const isAuthorized =
     allowedRoles.length === 0 || allowedRoles.some((role) => roleValue == role);
 
-  console.log("accessToken", accessToken);
+//   console.log("accessToken", accessToken);
 
   return   (isAuthorized && !pending && accessToken !== "undefined" ) ? (
     children

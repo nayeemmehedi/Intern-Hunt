@@ -25,13 +25,9 @@ import LogOut from "./components/company/LogOut";
 import ShowCv from "./components/company/ShowCv";
 import ShowCvDetails from "./components/company/ShowCvDetails";
 import CompanyPermission from "./components/admin/CompanyPermission";
-import TotalJobPostAdmin from "./components/admin/TotalJobPostAdmin";
-import AdminLogOut from "./components/admin/AdminLogOut";
-// import AboutUs from "./Page/ContactUs";
-import ContactUs from "./Page/AboutUs";
-import AboutUs from "./Page/AboutUs";
+import TotalJobPostAdmin from "./components/admin/TotalJobPost";
 
-function App() {
+function Old() {
   return (
     <div>
       <BrowserRouter>
@@ -42,13 +38,12 @@ function App() {
                 <Route index element={<HomeLayout></HomeLayout>} />
               </Route>
               <Route path="/intern-find" element={<Intern></Intern>} />
-              <Route path="/about-us" element={<AboutUs></AboutUs>} />
-
               <Route
                 path="/intern-find/:id"
                 element={<InternDetails></InternDetails>}
               />
 
+              
               <Route
                 path="/apply-intern/:id"
                 element={
@@ -111,93 +106,33 @@ function App() {
                     </PrivateRoute>
                   }
                 />
-                <Route
-                  path="jobPost"
-                  element={
-                    <PrivateRoute allowedRoles={["company"]}>
-                      <JobPost></JobPost>
-                    </PrivateRoute>
-                  }
-                />
+                <Route path="jobPost" element={<JobPost></JobPost>} />
                 <Route
                   path="total-job-post"
-                  element={
-                    <PrivateRoute allowedRoles={["company"]}>
-                      <TotalJobPost></TotalJobPost>
-                    </PrivateRoute>
-                  }
+                  element={<TotalJobPost></TotalJobPost>}
                 />
 
                 {/* <Route path="approvedCv" element={<h1>ApprovedCv</h1>} /> */}
-                <Route
-                  path="showCv"
-                  element={
-                    <PrivateRoute allowedRoles={["company"]}>
-                      <ShowCv></ShowCv>
-                    </PrivateRoute>
-                  }
-                />
+                <Route path="showCv" element={<ShowCv></ShowCv>} />
                 <Route
                   path="showCv/:id"
-                  element={
-                    <PrivateRoute allowedRoles={["company"]}>
-                      <ShowCvDetails></ShowCvDetails>
-                    </PrivateRoute>
-                  }
+                  element={<ShowCvDetails></ShowCvDetails>}
                 />
 
                 <Route path="deleteCv" element={<h1>deleteCv</h1>} />
                 <Route path="logOut" element={<LogOut></LogOut>} />
               </Route>
 
-              <Route
-                path="/admin"
-                element={
-                  <PrivateRoute allowedRoles={["admin"]}>
-                    <Admin></Admin>
-                  </PrivateRoute>
-                }
-              >
-                <Route
-                  path=""
-                  element={
-                    <PrivateRoute allowedRoles={["admin"]}>
-                      <AdminHome></AdminHome>
-                    </PrivateRoute>
-                  }
-                />
-                <Route
-                  path="Overview"
-                  element={
-                    <PrivateRoute allowedRoles={["admin"]}>
-                      <AdminHome></AdminHome>
-                    </PrivateRoute>
-                  }
-                />
+              <Route path="/admin" element={<Admin></Admin>}>
+                <Route path="" element={<AdminHome></AdminHome>} />
+                <Route path="Overview" element={<AdminHome></AdminHome>} />
                 <Route
                   path="company-permissions"
-                  element={
-                    <PrivateRoute allowedRoles={["admin"]}>
-                      <CompanyPermission></CompanyPermission>
-                    </PrivateRoute>
-                  }
+                  element={<CompanyPermission></CompanyPermission>}
                 />
                 <Route
                   path="total-job-post"
-                  element={
-                    <PrivateRoute allowedRoles={["admin"]}>
-                      <TotalJobPostAdmin></TotalJobPostAdmin>
-                    </PrivateRoute>
-                  }
-                />
-
-                <Route
-                  path="logout"
-                  element={
-                    <PrivateRoute allowedRoles={["admin"]}>
-                      <AdminLogOut></AdminLogOut>
-                    </PrivateRoute>
-                  }
+                  element={<TotalJobPostAdmin></TotalJobPostAdmin>}
                 />
               </Route>
             </Route>
@@ -208,4 +143,4 @@ function App() {
   );
 }
 
-export default App;
+export default Old;

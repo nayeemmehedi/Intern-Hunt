@@ -1,6 +1,7 @@
 import React from "react";
 import earthVideo from "../../../utils/earth.mp4";
 import "../../../styles/earth.css";
+import { Link } from "react-router-dom";
 
 // import {Link} from "react-router-dom"
 
@@ -29,7 +30,11 @@ const EarthRound = () => {
             </h6>{" "}
             <br />
             <div>
-              <button className="px-4 py-3 rounded bg-blue-800 text-sm mt-16">Explore Intern</button>
+            <Link to="/intern-find" className="no-underline text-white">
+            <button className="px-4 py-3 rounded bg-blue-800 text-sm mt-16">Explore Intern</button>
+
+
+            </Link>
             </div>
             {/* <Link to="./intern-job">    <button className="btn btn-lg" style={{ backgroundColor: 'rgb(73, 180, 194)', }}>Intern Page <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon></button></Link> */}
           </div>

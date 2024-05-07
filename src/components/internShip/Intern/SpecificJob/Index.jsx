@@ -6,13 +6,13 @@ const SpecificJob = ({ valuename }) => {
   const {
     _id,
     id,
-    companyname,
+    company_name,
     city,
-    job_tital,
+    job_title,
     money,
     office_time,
     vacancies,
-    datetime,
+    deadtime,
   } = valuename;
 
   return (
@@ -23,13 +23,13 @@ const SpecificJob = ({ valuename }) => {
   >
     <div className="flex-grow">
       <div className="text-center">
-        <h5 className="text-blue-500">{companyname}</h5>
+        <h5 className="text-blue-500">{company_name}</h5>
         <p>{city}</p>
       </div>
       <hr />
       <div>
         <p>
-          <span>Job title</span> : <span>{job_tital}</span>
+          <span>Job title</span> : <span>{job_title}</span>
         </p>
       </div>
       <div>
@@ -65,7 +65,7 @@ const SpecificJob = ({ valuename }) => {
       <div>
         <p>
           <span>Start Date</span> :{" "}
-          <span style={{ color: "red" }}>{datetime}</span>
+          <span style={{ color: "red" }}>{deadtime}</span>
         </p>
       </div>
     </div>

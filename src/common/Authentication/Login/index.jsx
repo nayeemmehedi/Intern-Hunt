@@ -4,9 +4,10 @@ import LottieFile from "../../LottiFile";
 import loginAnimation from "../../../utils/animation/login.json";
 import { Form, Input, Button, Select } from "antd";
 import { useMutation } from "@tanstack/react-query";
-import { login } from "../../../api/Auth";
+import { googleLogin, login } from "../../../api/Auth";
 import LoadingPage from "../../ResponseStatus/LoadingPage";
 import { useAuth } from "../../../contexts/AuthContext";
+import { googleProvider, auth } from "../../firebase";
 
 const { Option } = Select;
 
@@ -22,11 +23,22 @@ const Login = () => {
       mutationFn: login,
     });
 
+  const {
+    mutateAsync: mutateAsyncs,
+    isLoading: isLoadings,
+    isSuccess: isSuccesss,
+    isError: isErrors,
+    error: errors,
+    data: datas,
+  } = useMutation({
+    mutationFn: googleLogin,
+  });
+
   const onFinish = async (values) => {
-    console.log("Received values:", values);
 
     try {
       const value = await mutateAsync(values);
+
 
       if (value.statusCode === 200) {
         localStorage.setItem("accessToken", value.data.accessToken);
@@ -34,20 +46,51 @@ const Login = () => {
         localStorage.setItem("pending", value.data.pending);
         localStorage.setItem("role", value.data.role);
         localStorage.setItem("email", value.data.userEmail);
-        localStorage.setItem("name", value.data.userName);
+        localStorage.setItem("name", value.data.userName??"User");
+        localStorage.setItem("company_id", value.data.id);
       }
 
       setTimeout(() => {
         navigate(from);
 
-        window.location.reload()
-      }, 2000);
+        window.location.reload();
+      }, 1000);
     } catch (error) {
       console.error("Error during login:", error);
     }
   };
 
-  if (isLoading) {
+  const signInWithGoogle = async () => {
+    try {
+      const result = await auth.signInWithPopup(googleProvider);
+      const user = result.user;
+      const idToken = await user.getIdToken();
+      // Handle successful login
+
+      const value = await mutateAsyncs({ idToken: idToken });
+
+
+      if (value.statusCode === 200) {
+        localStorage.setItem("accessToken", value.data.accessToken);
+        localStorage.setItem("refreshToken", value.data.refreshToken);
+        localStorage.setItem("pending", value.data.pending);
+        localStorage.setItem("role", value.data.role);
+        localStorage.setItem("email", value.data.userEmail);
+        localStorage.setItem("name", value.data.userName??"User");
+      }
+
+      setTimeout(() => {
+        navigate(from);
+
+        window.location.reload();
+      }, 1000);
+    } catch (error) {
+      // Handle login error
+      console.error(error);
+    }
+  };
+
+  if (isLoading || isLoading) {
     return (
       <>
         <LoadingPage />
@@ -125,7 +168,10 @@ const Login = () => {
             <span className="text-gray-400">or</span>
             <div className="border-t border-gray-600 flex-grow ml-2"></div>
           </div>
-          <button className="w-full bg-white text-gray-800 py-2 rounded-lg hover:bg-gray-100 transition-colors mb-4 flex items-center justify-center">
+          <button
+            onClick={signInWithGoogle}
+            className="w-full bg-white text-gray-800 py-2 rounded-lg hover:bg-gray-100 transition-colors mb-4 flex items-center justify-center"
+          >
             <span className="mr-2">
               <i className="fab fa-google fa-2x text-red-500"></i>
             </span>
@@ -134,7 +180,7 @@ const Login = () => {
           </button>
 
           <div>
-            {isSuccess && (
+            {(isSuccess || isSuccesss) && (
               <p className="text-green-800 font-light text-3xl py-3 ">
                 Succesfully Logged in
               </p>
@@ -143,6 +189,12 @@ const Login = () => {
             {isError && (
               <p className="text-red-600 font-light text-3xl py-3">
                 {error.data.message}
+              </p>
+            )}
+
+            {isErrors && (
+              <p className="text-red-600 font-light text-3xl py-3">
+                {errors.data.message}
               </p>
             )}
           </div>

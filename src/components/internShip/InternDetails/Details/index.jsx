@@ -1,26 +1,32 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { lazy, Suspense } from "react";
+
 import { useParams } from "react-router";
 import EveryDetails from "../EveryDetails";
+import { useQuery } from "@tanstack/react-query";
+import { singleJob } from "../../../../api/intern";
 
 function Details() {
   const { id } = useParams();
 
-  const [data, setvalue] = useState({});
+  const { data, isLoading, isSuccess } = useQuery({
+    queryKey: ["todos", id],
+    queryFn: () => singleJob(id),
+  });
 
-  useEffect(() => {
-    fetch(`https://internhunt-24.onrender.com/event/${id}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setvalue(data);
-      });
-  }, []);
+  if (isLoading) {
+    <div>Loading..</div>;
+  }
 
-  console.log("done");
   return (
     <div>
-      <div>
-        <EveryDetails newvalue={data}></EveryDetails>
-      </div>
+      {data?.data?.value && (
+        <div>
+          <Suspense fallback={<div>Loading..</div>}>
+            <EveryDetails newvalue={data?.data?.value}></EveryDetails>
+          </Suspense>
+        </div>
+      )}
     </div>
   );
 }

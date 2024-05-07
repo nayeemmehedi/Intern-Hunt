@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { signUp } from "../../../api/Auth";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import LoadingPage from "../../ResponseStatus/LoadingPage.jsx";
+import { auth, googleProvider } from "../../firebase/index.jsx";
 
 const { Option } = Select;
 
@@ -18,7 +19,6 @@ const SignUp = () => {
 
   const onFinish = async (values) => {
     // event.preventDefault();
-    console.log("Received values:", values);
 
     try {
       const value = await signUpMutation.mutateAsync(values);

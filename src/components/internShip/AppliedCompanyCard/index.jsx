@@ -45,11 +45,11 @@ const AppliedCompanyCard = () => {
   return (
     <div className="px-4 sm:px-6 lg:px-8">
       <h4 className="my-4 font-bold text-center text-lg sm:text-xl md:text-2xl">
-        Which Company start with you Primary Selction Porcess:
+        Which Company You applied:
       </h4>
 
       {applications.length == 0 ? (
-        <p className="font-extralight">No one want you now,Apply more </p>
+        <p className="font-extralight">Apply more </p>
       ) : (
         <div className="overflow-x-auto">
           <Table

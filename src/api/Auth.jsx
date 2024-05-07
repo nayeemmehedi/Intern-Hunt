@@ -17,7 +17,34 @@ export const login = async (credentials) => {
     // const { accessToken, refreshToken,pending ,role ,userEmail} = response.data;
 
     return response.data;
-    
+  } catch (error) {
+    throw error.response.data;
+  }
+};
+
+
+export const googleLogin = async (idToken) => {
+  try {
+
+    const response = await api.post("/google/login", idToken);
+    // const { accessToken, refreshToken,pending ,role ,userEmail} = response.data;
+
+    return response.data;
+  } catch (error) {
+    throw error.response.data;
+  }
+};
+
+
+
+
+
+export const CompanyInfoSignUp = async () => {
+  try {
+    const response = await api.get("/companyInfo");
+    // const { accessToken, refreshToken,pending ,role ,userEmail} = response.data;
+
+    return response.data;
   } catch (error) {
     throw error.response.data;
   }

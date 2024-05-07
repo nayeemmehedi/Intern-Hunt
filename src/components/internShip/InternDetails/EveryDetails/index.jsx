@@ -1,5 +1,7 @@
 import React from "react";
-import svg from "../../../../../public/image/intern.jpg";
+// import svg from "../../../../../public/image/intern.jpg";
+import svg from  "/public/image/intern.jpg";
+
 import FormatAlignLeftIcon from "@mui/icons-material/FormatAlignLeft";
 import SettingsInputAntennaIcon from "@mui/icons-material/SettingsInputAntenna";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
@@ -19,16 +21,16 @@ const EveryDetails = ({ newvalue }) => {
     _id,
     skill,
 
-    companyname,
-    your_role,
+    company_name,
+    role_job,
     company_description,
     city,
-    job_tital,
+    job_title,
     money,
     office_time,
     vacancies,
-    datetime,
-    you_have,
+    deadtime,
+    // you_have,
   } = newvalue;
   return (
     <div className="">
@@ -43,45 +45,40 @@ const EveryDetails = ({ newvalue }) => {
           style={{ boxShadow: "0px 10px 10px ", backgroundColor: "#e6e3e8" }}
         >
           <h5 className="text-center py-4 font-semibold">
-            {job_tital} at {companyname}
+            {job_title} at {company_name}
           </h5>
-
           <h6 className="font-extrabold">
             {" "}
-            <FormatAlignLeftIcon /> {companyname}
+            <FormatAlignLeftIcon /> {company_name}
           </h6>{" "}
           <hr />
-         
           <h5>
             {" "}
-            {/* <AccountBalanceIcon style={{ color: "#67c1c7" }} /> */}
-             #{job_tital}
+            {/* <AccountBalanceIcon style={{ color: "#67c1c7" }} /> */}#
+            {job_title}
           </h5>
-         
           <h6>
             <PowerSettingsNewIcon style={{ color: "#67c1c7" }} /> Number of
-            openings :  {vacancies}
+            openings : {vacancies}
           </h6>
-          
           <h6>
             {" "}
             <SettingsInputAntennaIcon style={{ color: "#67c1c7" }} /> About
             Infinity Business Solutions
           </h6>
           <div className="ms-3">
-          <p className="">Description :</p>
-          <hr className="w-32" />
-          <p className="">{company_description}</p>
+            <p className="">Description :</p>
+            <hr className="w-32" />
+            <p className="">{company_description}</p>
           </div>
-        
           <h6>
             <WrapTextIcon style={{ color: "#67c1c7" }} /> About the job
           </h6>
-         <div className="ms-3">
-         <h6 className="">key responsibilities :</h6>
-          <hr className="w-32"/>
-          <p className="">{your_role}</p>
-         </div>
+          <div className="ms-3">
+            <h6 className="">key responsibilities :</h6>
+            <hr className="w-32" />
+            <p className="">{role_job}</p>
+          </div>
           <h6>
             <SpeakerPhoneIcon style={{ color: "#67c1c7" }} /> Skill(s) required
           </h6>
@@ -89,7 +86,7 @@ const EveryDetails = ({ newvalue }) => {
           <h6>
             <SportsHockeyIcon style={{ color: "#67c1c7" }} /> Who can apply
           </h6>
-          <p className="">
+          {/* <p className="">
             <div>
               {you_have
                 ? you_have.map((value) => (
@@ -101,14 +98,13 @@ const EveryDetails = ({ newvalue }) => {
                   ))
                 : null}
             </div>
-          </p>
+          </p> */}
           <h6 className="">
             <LocalBarIcon style={{ color: "#67c1c7" }} /> Educational
             Qualifications
           </h6>
           <div className="font-thin ms-3">
             Bachelor of Science (BSc) in Computer Science & Engineering{" "}
-            
           </div>
           <h6 className="">
             <DonutSmallIcon style={{ color: "#67c1c7" }} /> Job Type
@@ -122,9 +118,9 @@ const EveryDetails = ({ newvalue }) => {
             <DonutSmallIcon style={{ color: "#67c1c7" }} /> Salary
           </h6>
           <div className="ms-3">
-          <h6 className=""> Probation: </h6>
-          <p className=""> Duration: 3 months </p>
-          <p className=""> Salary during probation: {money}</p>
+            <h6 className=""> Probation: </h6>
+            <p className=""> Duration: 3 months </p>
+            <p className=""> Salary during probation: {money}</p>
           </div>
           <h6 className="">
             <PlaceIcon style={{ color: "#67c1c7" }} /> City
@@ -133,7 +129,7 @@ const EveryDetails = ({ newvalue }) => {
           <h6 className="">
             <DateRangeIcon style={{ color: "#67c1c7" }} /> Start date
           </h6>
-          <p className="ms-3"> {datetime}</p>
+          <p className="ms-3"> {deadtime}</p>
           <div className="text-center nayeem">
             <Link to={`/apply-intern/${_id}`}>
               {" "}
@@ -149,8 +145,8 @@ const EveryDetails = ({ newvalue }) => {
                 This Job
               </h4>
               <hr />
-              <h3>Start date</h3>
-              <p>{datetime}</p>
+              <h3>End date</h3>
+              <p>{deadtime}</p>
 
               <h6>
                 <LocalBarIcon style={{ color: "#346f73" }} /> Skill
@@ -175,8 +171,6 @@ const EveryDetails = ({ newvalue }) => {
             </div>
           </div>
         </div>
-
-       
       </div>
       <img src={svg} alt="" />
     </div>

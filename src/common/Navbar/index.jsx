@@ -4,6 +4,7 @@ import { faFeatherAlt } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import { logOut } from "../../api/intern";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,6 +13,7 @@ function Navbar() {
 
   const roleValue = localStorage.getItem("role");
   const userName = localStorage.getItem("name")?? "User"
+
 
 
 
@@ -30,10 +32,30 @@ function Navbar() {
     setIsOpen(!isOpen);
   };
 
+  // const handleLogout = () => {
+  //   // Implement your logout logic here
+  // };
+
+
   const handleLogout = () => {
-    // Implement your logout logic here
-    console.log("Logout clicked");
-  };
+  
+    logOut()
+        .then(response => {
+          console.log("logged out resposnse",response);
+            
+                // Clear localStorage
+                localStorage.clear(); // Clear everything from localStorage
+                // Redirect or do any necessary action
+                window.location = '/login'; // Redirect to login page
+            
+        })
+        .catch(error => {
+            // Clear localStorage
+            localStorage.clear(); // Clear everything from localStorage
+            // Redirect or do any necessary action
+            window.location = '/login'; // Redirect to login page
+        });
+};
 
 
   return (
@@ -64,10 +86,15 @@ function Navbar() {
                 {" "}
                 <li>Review</li>{" "}
               </Link>
-              <Link to="/hire" className="no-underline text-white">
+              <Link to="/about-us" className="no-underline text-white">
+                {" "}
+                <li>About Us</li>{" "}
+              </Link>
+              
+              {/* <Link to="/hire" className="no-underline text-white">
                 {" "}
                 <li>Hire You</li>{" "}
-              </Link>
+              </Link> */}
             </ul>
           </div>
         ) : (
@@ -93,7 +120,7 @@ function Navbar() {
           <div className="hidden lg:block">
             <Link to="/login" className="no-underline text-white">
               <ul className="flex space-x-4">
-                <li className="px-3 py-2 rounded bg-blue-600 text-sm font-semibold">
+                <li className="px-3 py-2 rounded  text-sm font-semibold ">
                   Login
                 </li>
               </ul>
@@ -124,7 +151,7 @@ function Navbar() {
             onClick={toggleDropdown}
           >
             <FontAwesomeIcon icon={faUserCircle} className="mr-2" />
-            {userName}
+            <span className="hidden lg:block">{userName}</span>
             <svg
               className="ml-2 w-4 h-4"
               aria-hidden="true"
@@ -151,10 +178,10 @@ function Navbar() {
                 aria-labelledby="options-menu"
               >
                 <button
-                  className="block px-4 py-2 text-sm text-white"
-                  onClick={handleLogout}
+                  className="block px-4 py-2 text-sm text-white "
+                  onClick={()=>handleLogout()}
                 >
-                  <FontAwesomeIcon icon={faSignOutAlt} className="mr-2" />
+                  <FontAwesomeIcon icon={faSignOutAlt} className="mr-2 " />
                   Logout
                 </button>
               </div>

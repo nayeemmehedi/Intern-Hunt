@@ -1,6 +1,7 @@
 import React from "react";
 import "../../../styles/popularIntern.css";
 import { popularIntern } from "../../../utils/fakePopularIntern";
+import { Link } from "react-router-dom";
 // import { Link } from "react-router-dom";
 
 const PopularIntern = () => {
@@ -34,9 +35,11 @@ const PopularIntern = () => {
              </div>
 
               <div className="p-3  grid">
+              <Link to="/intern-find" className="no-underline text-white">
                 <button className="p-2  bg-blue-700 rounded">
                   Intern Page{" "}
                 </button>
+                </Link>
               </div>
             </div>
           ))}

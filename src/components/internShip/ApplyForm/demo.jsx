@@ -9,7 +9,6 @@
 //   const [fileList, setFileList] = useState([]);
 
 //   const onFinish = (values) => {
-//     console.log('Received values of form:', values);
 //   };
 
 //   const handleFileChange = ({ fileList: newFileList }) => {
@@ -157,7 +156,6 @@ import { SmileOutlined, FrownOutlined } from '@ant-design/icons';
 
 const MyForm = () => {
   const onFinish = (values) => {
-    console.log('Received values of form:', values);
   };
 
   const renderFeedbackIcon = (props) => {

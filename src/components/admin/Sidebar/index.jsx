@@ -18,8 +18,8 @@ const iconsValue = [
   },
   {
     name: <MdDeleteSweep className="w-6 h-4"></MdDeleteSweep>,
-    value: "Job Post",
-    link:"/admin/jobPost"
+    value: "Company Permissions",
+    link:"/admin/company-permissions"
 
   },
   {
@@ -28,12 +28,12 @@ const iconsValue = [
     link:"/admin/total-job-post"
 
   },
-  {
-    name: <BsPeopleFill className="w-6 h-4"></BsPeopleFill>,
-    value: "Show Cv",
-    link:"/company/showCv"
+  // {
+  //   name: <BsPeopleFill className="w-6 h-4"></BsPeopleFill>,
+  //   value: "Show Cv",
+  //   link:"/company/showCv"
 
-  },
+  // },
   // {
   //   name: <MdShoppingBag className="w-6 h-4"></MdShoppingBag>,
   //   value: "Approved Cv",
@@ -41,16 +41,16 @@ const iconsValue = [
 
   // },
  
-  {
-    name: <RiBardFill></RiBardFill>,
-    value: "Confirm Intern",
-    link:"/company/deleteCv"
+  // {
+  //   name: <RiBardFill></RiBardFill>,
+  //   value: "Confirm Intern",
+  //   link:"/company/deleteCv"
 
-  },
+  // },
   {
     name: <PiAlignBottomFill></PiAlignBottomFill>,
     value: "Log Out",
-    link:"/company/logOut"
+    link:"/admin/logOut"
 
   }
 ];
@@ -75,7 +75,7 @@ function Sidebar() {
         <div className="overflow-y-auto  ">
           {iconsValue.map((v, id) => (
 
-            <NavLink   className={({ isActive }) =>
+            <NavLink key={id}   className={({ isActive }) =>
             isActive ?"no-underline flex items-center text-white rounded-md bg-black  py-3 font-semibold px-2  my-2":"no-underline flex items-center text-white rounded-md bg-gray-700  py-3 font-semibold px-2  my-2"} to={v.link}>
             {/* <div className=""> */}
              
