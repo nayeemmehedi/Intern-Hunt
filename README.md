@@ -66,7 +66,9 @@ To get a local copy of the project up and running, please refer to the detailed 
 ```bash
 github link :  https://github.com/nayeemmehedi/Intern-Hunt
 
+Live Link Fast: https://frolicking-dragon-4b97e9.netlify.app/
 Live Link : https://intern-hunt.vercel.app/
+
 
 ```
 

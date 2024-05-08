@@ -9,9 +9,9 @@ const JobFind = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const { data, isLoading, error ,isError } = useQuery({
-    queryKey: ['totalJob', searchTerm, page],
-    queryFn: () => totalJob({ searchTerm, page }),
-    // enabled: true, // or remove this line
+    queryKey: ['totalJob', page],
+    queryFn: () => totalJob({ page }),
+    enabled: true, // or remove this line
   });
 console.log("data", data);
   const handlePageChange = (newPage) => {
