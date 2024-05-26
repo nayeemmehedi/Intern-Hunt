@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import SpecificJob from '../SpecificJob/Index';
 import { Pagination } from 'antd';
 import { useQuery } from '@tanstack/react-query';
-import {totalJob} from "../../../../api/intern/"
+import { totalJob } from "../../../../api/intern/";
 
 const JobFind = () => {
   const [page, setPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState('');
 
-  const { data, isLoading, error ,isError } = useQuery({
+  const { data, isLoading, error, isError } = useQuery({
     queryKey: ['totalJob', page],
     queryFn: () => totalJob({ page }),
-    enabled: true, // or remove this line
+    enabled: true,
   });
-console.log("data", data);
+
   const handlePageChange = (newPage) => {
     setPage(newPage);
   };
@@ -21,14 +21,19 @@ console.log("data", data);
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
   };
-  if (isLoading ) {
+
+  const memoizedData = useMemo(() => data?.data?.value || [], [data?.data?.value]);
+
+  
+
+  if (isLoading) {
     return <div className="h-96">Loading...</div>;
   }
 
   return (
     <div>
-      {/* <div>
-        <small>Type Job Name</small>
+      <div>
+        {/* <small>Type Job Name</small>
         <br />
         <input
           type="text"
@@ -36,10 +41,10 @@ console.log("data", data);
           placeholder="Searching..."
           value={searchTerm}
           onChange={handleSearch}
-        />
-      </div> */}
+        /> */}
+      </div>
       <div className="grid grid-cols-1 lg:grid-cols-3">
-        {data?.data?.value.map((value) => (
+        {memoizedData?.map((value) => (
           <SpecificJob key={value._id} valuename={value}></SpecificJob>
         ))}
       </div>
