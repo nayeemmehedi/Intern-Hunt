@@ -39,6 +39,8 @@ function App() {
                 <Route path="/">
                   <Route index element={<HomeLayout></HomeLayout>} />
                 </Route>
+                <Route path="/login" element={<Login></Login>} />
+                <Route path="/signup" element={<SignUp></SignUp>} />
                 <Route path="/intern-find" element={<Intern></Intern>} />
                 <Route path="/about-us" element={<AboutUs></AboutUs>} />
 
@@ -77,8 +79,7 @@ function App() {
                   }
                 />
 
-                <Route path="/login" element={<Login></Login>} />
-                <Route path="/signup" element={<SignUp></SignUp>} />
+                
                 {/* company */}
                 {/* <PrivateRoute allowedRoles={["company"]}> */}
 

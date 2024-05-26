@@ -35,10 +35,8 @@ const Login = () => {
   });
 
   const onFinish = async (values) => {
-
     try {
       const value = await mutateAsync(values);
-
 
       if (value.statusCode === 200) {
         localStorage.setItem("accessToken", value.data.accessToken);
@@ -46,7 +44,7 @@ const Login = () => {
         localStorage.setItem("pending", value.data.pending);
         localStorage.setItem("role", value.data.role);
         localStorage.setItem("email", value.data.userEmail);
-        localStorage.setItem("name", value.data.userName??"User");
+        localStorage.setItem("name", value.data.userName ?? "User");
         localStorage.setItem("company_id", value.data.id);
       }
 
@@ -60,6 +58,7 @@ const Login = () => {
     }
   };
 
+
   const signInWithGoogle = async () => {
     try {
       const result = await auth.signInWithPopup(googleProvider);
@@ -68,6 +67,9 @@ const Login = () => {
       // Handle successful login
 
       const value = await mutateAsyncs({ idToken: idToken });
+      // console.log("value", value);
+      console.log("user", idToken);
+      console.log("user", user.data);
 
 
       if (value.statusCode === 200) {
@@ -76,7 +78,7 @@ const Login = () => {
         localStorage.setItem("pending", value.data.pending);
         localStorage.setItem("role", value.data.role);
         localStorage.setItem("email", value.data.userEmail);
-        localStorage.setItem("name", value.data.userName??"User");
+        localStorage.setItem("name", value.data.userName ?? "User");
       }
 
       setTimeout(() => {
@@ -181,18 +183,18 @@ const Login = () => {
 
           <div>
             {(isSuccess || isSuccesss) && (
-              <p className="text-green-800 font-light text-3xl py-3 ">
+              <p className="text-green-800 font-light text-3xl py-3">
                 Succesfully Logged in
               </p>
             )}
 
-            {isError && (
+            {isError && error && error.data && (
               <p className="text-red-600 font-light text-3xl py-3">
                 {error.data.message}
               </p>
             )}
 
-            {isErrors && (
+            {isErrors && errors && errors.data && (
               <p className="text-red-600 font-light text-3xl py-3">
                 {errors.data.message}
               </p>

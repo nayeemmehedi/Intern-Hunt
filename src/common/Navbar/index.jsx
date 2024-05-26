@@ -29,6 +29,10 @@ function Navbar() {
     setIsOpen(!isOpen);
   };
 
+  const onClickFunc = () => {
+    console.log()
+  }
+
   // const handleLogout = () => {
   //   // Implement your logout logic here
   // };
@@ -111,7 +115,7 @@ function Navbar() {
 
         {role === "null" ||
           (role === null && (
-            <div className="hidden lg:block">
+            <button className="hidden lg:block">
               <Link to="/login" className="no-underline text-white ">
                 <ul className="flex space-x-4">
                   <li className="px-3 py-2 rounded  text-sm font-semibold bg-blue-600">
@@ -119,7 +123,7 @@ function Navbar() {
                   </li>
                 </ul>
               </Link>
-            </div>
+            </button>
           ))}
 
         {role === "admin" ? (

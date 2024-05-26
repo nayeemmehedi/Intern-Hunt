@@ -23,12 +23,12 @@ import 'firebase/compat/auth';
 
 const firebaseConfig = {
     apiKey: "AIzaSyAXYZTpgPfqD1ngzYEYmNUG7T2aGTETPQM",
-    authDomain: "intern-hunt-1b605.firebaseapp.com",
-    projectId: "intern-hunt-1b605",
-    storageBucket: "intern-hunt-1b605.appspot.com",
-    messagingSenderId: "604339210625",
-    appId: "1:604339210625:web:4035105311f93d37250080",
-    measurementId: "G-21WH0021EW"
+  authDomain: "intern-hunt-1b605.firebaseapp.com",
+  projectId: "intern-hunt-1b605",
+  storageBucket: "intern-hunt-1b605.appspot.com",
+  messagingSenderId: "604339210625",
+  appId: "1:604339210625:web:4035105311f93d37250080",
+  measurementId: "G-21WH0021EW"
 };
 
 

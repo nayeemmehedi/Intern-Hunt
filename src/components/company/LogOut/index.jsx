@@ -3,6 +3,9 @@ import { logOut } from "../../../api/intern";
 import { FiLogOut } from "react-icons/fi";
 
 function LogOut() {
+  console.log("logout")
+
+
   const handleLogout = () => {
     logOut()
       .then((response) => {
