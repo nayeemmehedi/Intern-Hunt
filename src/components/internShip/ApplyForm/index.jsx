@@ -82,7 +82,7 @@ const ApplyForm = () => {
       <div>
         <img
           className="object-cover h-72 w-full"
-          src="../../../public/image/Student.jpg"
+          src="/image/Student.jpg"
           alt=""
         />
       </div>
