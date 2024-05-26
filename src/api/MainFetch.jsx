@@ -55,7 +55,7 @@ api.interceptors.response.use(
 
 
 export const api2 = axios.create({
-  baseURL: 'http://localhost:4500/api/v1',
+  baseURL: 'https://internhunt-backend-project.onrender.com/api/v1',
 //   timeout: 10000, // 10 seconds
   headers: {
     "Content-Type": "multipart/form-data",

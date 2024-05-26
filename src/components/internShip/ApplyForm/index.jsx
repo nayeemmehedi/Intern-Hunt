@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Form, Input, Upload } from "antd";
 import { InboxOutlined, FrownOutlined } from "@ant-design/icons";
 import { useMutation } from "@tanstack/react-query";
@@ -9,14 +9,20 @@ import ClipLoader from "react-spinners/ClipLoader";
 const { Dragger } = Upload;
 
 const ApplyForm = () => {
+
+
   let { id } = useParams();
   const [form] = Form.useForm();
-  const { mutate, isLoading, isSuccess, isError, error, isPending } = useMutation({ mutationFn: applyForm });
+  const { mutateAsync, isLoading, isSuccess, isError, error, isPending } = useMutation({ mutationFn: applyForm });
+
+  const [validationError,setvalidationError] = useState("")
+
+  console.log("error: " + error)
 
 
    const email = localStorage.getItem("email")
 
-  const onFinish = (values) => {
+  const onFinish =async (values) => {
     // Handle form data
 
     const formData = new FormData();
@@ -27,12 +33,13 @@ const ApplyForm = () => {
     formData.append("linkedIn", values.linkedIn);
     formData.append("pdfFile", values.pdfFile[0].originFileObj);
 
-    mutate(formData, {
+    await mutateAsync(formData, {
       onSuccess: (response) => {
         // Additional success handling if needed
       },
       onError: (error) => {
         console.error("Error uploading file:", error);
+        setvalidationError(error.data.message)
         // Additional error handling if needed
       },
     });
@@ -77,6 +84,7 @@ const ApplyForm = () => {
     }, 2500);
   }
 
+  console.log("bujho nai",validationError)
   return (
     <div className="bg-dark text-white">
       <div>
@@ -174,10 +182,12 @@ const ApplyForm = () => {
             label="Upload Your CV (pdf)"
             valuePropName="fileList"
             getValueFromEvent={handleFileChange}
+            // hasFeedback
+
             rules={[
               {
                 required: true,
-                message: "PDF file is required",
+                message: "Pdf Upload Successfully",
               },
             ]}
           >
@@ -224,8 +234,12 @@ const ApplyForm = () => {
             </p>
           )}
 
-          {isError && (
-            <p className="text-red-600 font-light">{error.message}</p>
+          {isError ||validationError  && (
+            <p className="text-red-600 font-light">{error.message} || {validationError}</p>
+          )}
+
+{validationError  && (
+            <p className="text-red-600 font-light">{validationError}</p>
           )}
         </div>
       </div>
