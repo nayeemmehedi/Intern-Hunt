@@ -30,6 +30,8 @@ const JobFind = () => {
     return <div className="h-96">Loading...</div>;
   }
 
+  console.log("memoizedData",memoizedData)
+
   return (
     <div>
       <div>

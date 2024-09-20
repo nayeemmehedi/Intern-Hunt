@@ -5,7 +5,7 @@ import axios from 'axios';
 // http://localhost:4500/api/v1
 export const api = axios.create({
   // baseURL: 'http://localhost:4500/api/v1',
-  baseURL: 'https://internhunt-backend-project.onrender.com/api/v1',
+  baseURL: 'https://internhunt-backend-project.vercel.app/api/v1',
   
 //   timeout: 10000, // 10 seconds
   headers: {
@@ -55,7 +55,7 @@ api.interceptors.response.use(
 
 
 export const api2 = axios.create({
-  baseURL: 'https://internhunt-backend-project.onrender.com/api/v1',
+  baseURL: 'https://internhunt-backend-project.vercel.app/api/v1',
 //   timeout: 10000, // 10 seconds
   headers: {
     "Content-Type": "multipart/form-data",
