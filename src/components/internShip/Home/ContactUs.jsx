@@ -3,6 +3,7 @@ import "../../../styles/contactus.css";
 import { useForm } from "react-hook-form";
 import img from "../../../utils/illustration/3593987.jpg";
 import LazyLoad from "react-lazyload";
+import FramerMotion from "../../../utils/FramerMotion";
 // import emailjs from 'emailjs-com';
 
 const ContactUs = () => {
@@ -30,6 +31,7 @@ const ContactUs = () => {
   // }
 
   return (
+    <FramerMotion>
     <div className="fullform mt-5 pt-5" style={{ fontFamily: "Besley" }}>
       <h2 className="text-center my-5">
         <span style={{ color: "purple" }}>Contact</span> Us
@@ -79,6 +81,7 @@ const ContactUs = () => {
         </div>
       </div>
     </div>
+    </FramerMotion>
   );
 };
 

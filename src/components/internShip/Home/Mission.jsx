@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from "react";
 import lottie from "lottie-web";
 import social from "../../../utils/animation/social.json";
 import LazyLoad from "react-lazyload";
+import FramerMotion from "../../../utils/FramerMotion";
+import LottieFile from "../../../common/LottiFile";
 
 const Mission = () => {
   const container = useRef(null);
@@ -17,6 +19,8 @@ const Mission = () => {
     });
   }, []);
   return (
+    <>
+    <FramerMotion>
     <div>
       <div className="row" style={{ fontFamily: "Besley" }}>
         <div className="col-lg-6 col-md-12 col-sm-12  secendview">
@@ -43,16 +47,13 @@ const Mission = () => {
 
         <div className="col-lg-5 col-md-12 col-sm-12 pe-lg-5">
           <br /> <br />
-          <LazyLoad height={400}>
-          <div
-            style={{ height: "500px" }}
-            className="container "
-            ref={container}
-          ></div>
-          </LazyLoad>
+          <LottieFile height={"550px"} value={social} />
         </div>
       </div>
     </div>
+    </FramerMotion>
+    </>
+
   );
 };
 

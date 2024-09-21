@@ -1,6 +1,9 @@
+import FramerMotion from "../../../utils/FramerMotion";
+
 const JoinPage = () => {
   return (
     <div>
+      <FramerMotion>
       <div
         style={{
           minHeight: "200px",
@@ -27,6 +30,8 @@ const JoinPage = () => {
           </div>
         </div>
       </div>
+
+      </FramerMotion>
     </div>
   );
 };

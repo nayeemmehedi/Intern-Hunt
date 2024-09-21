@@ -3,11 +3,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 import { faBug } from "@fortawesome/free-solid-svg-icons";
 import { faAmbulance } from "@fortawesome/free-solid-svg-icons";
+import FramerMotion from "../../../utils/FramerMotion";
 
 // import { Link } from "react-router-dom";
 
 const WorkingStep = () => {
   return (
+    <FramerMotion>
    
     <div className="p-5" style={{ fontFamily: "Besley" }}>
       <h1 className="text-center pb-5">Working Steps</h1>
@@ -117,6 +119,7 @@ const WorkingStep = () => {
         </div>
       </div>
     </div>
+    </FramerMotion>
   );
 };
 
